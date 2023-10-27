@@ -1,0 +1,1 @@
+export const userImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLI1a2dRBDNp18xBM0hkxOJpYxL-iRqKYGkVmWUBw&s"
