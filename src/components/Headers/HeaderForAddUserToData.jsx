@@ -1,35 +1,23 @@
 import React from "react";
 import { AppBar, Button, Typography, Link} from "@mui/material";
+import { styleForFormHeaderAppBar, styleForFormHeaderButton, styleForFormHeaderLink } from "../Consts/StyleConstants/HeaderConsts/FormHeaderStyleConsts";
 
 function Header(){
+
     return(
         <AppBar
-            sx={{
-                flexDirection:"column",
-                bgcolor:"lightblue",
-                zIndex:"1"
-            }}
+            sx={styleForFormHeaderAppBar}
         >
             <Link
                 href="/"
-                sx={{
-                    ml: "auto"
-                }}
+                sx={styleForFormHeaderLink}
             >
                 <Button
                     variant="outlined"
-                    sx={{
-                        width:"300px",
-                        color:"white",
-                        m: "20px",
-                        
-                    }}
+                    sx={styleForFormHeaderButton}
                 >
                     <Typography 
                         variant="body"
-                        sx={{
-                            color:"black",
-                        }}
                     >Return to main page</Typography>
                     
                 </Button>

@@ -1,7 +1,7 @@
 import React from "react";
 import UserCard from "./GetUser";
 import { userImageUrl } from "../Consts/UserStandartImage";
-function ShowUsers({filteredUsers, deleteUser}){
+function ShowUsers({filteredUsers, deleteUser, editUser}){
 
     return(
         filteredUsers.map(item => {
@@ -10,11 +10,12 @@ function ShowUsers({filteredUsers, deleteUser}){
                     key={item.id}
                     name={item.name}
                     mail={item.mail}
-                    image={item.userImage || userImageUrl}
+                    userImage={item.userImage || userImageUrl}
                     position={item.position}
                     description={item.description}
                     id={item.id}
                     deleteUser={(i) => deleteUser(i)}
+                    editUser={(id, key, value) => editUser(id, key, value)}
                 />
             )
         })

@@ -1,5 +1,6 @@
 import { Alert, FormControl, InputLabel, MenuItem, Select, TextField, Button } from "@mui/material";
 import React, { useState } from "react";
+import { styleForAddUserFormAlert, styleForAddUserFormTextFields, styleForAddUserFormFormControl } from "../Consts/StyleConstants/UsersConsts/AddUserFormStyleConsts";
 
 function AddUserForm( {addUserToData} ){
     const [userPosition, setUserPosition] = useState("");
@@ -18,7 +19,6 @@ function AddUserForm( {addUserToData} ){
             position: userPosition,
             description: userDescription,
         }
-        console.log(user)
         if(!userName || !userMail || !userPosition || !userDescription){
             setShowAlert(true)
             setTimeout(() => {
@@ -33,22 +33,16 @@ function AddUserForm( {addUserToData} ){
             setUserMail("");
         }
     }
+
     return(
         <>
             <FormControl
-                sx={{
-                    mt:"100px",
-                    display:"flex",
-                    flexDirection:"column",
-
-                }}
+                sx={styleForAddUserFormFormControl}
             >
                 <InputLabel >Person position</InputLabel>
                 <Select
                     label="Person position"
-                    sx={{
-                        mb:"20px"
-                    }}
+                    sx={styleForAddUserFormTextFields}
                     value={userPosition}
                     onChange={(e) => setUserPosition(e.target.value)}
                     >
@@ -59,41 +53,31 @@ function AddUserForm( {addUserToData} ){
                 <TextField
                     label="Person name" variant="outlined"
                     onChange={(e) => setUserName(e.target.value)}
-                    sx={{
-                        mb:"20px"
-                    }}
+                    sx={styleForAddUserFormTextFields}
                     value={userName}
                 ></TextField>
                 <TextField
                     label="Person mail" variant="outlined"
                     onChange={(e) => setUserMail(e.target.value)}
-                    sx={{
-                        mb:"20px"
-                    }}
+                    sx={styleForAddUserFormTextFields}
                     value={userMail}
                 ></TextField>
                 <TextField
                     label="Person avatar" variant="outlined"
                     onChange={(e) => setUserAvatar(e.target.value)}
-                    sx={{
-                        mb:"20px"
-                    }}
+                    sx={styleForAddUserFormTextFields}
                     value={userAvatar}
                 ></TextField>
                 <TextField
                     label="Person description" variant="outlined"
                     onChange={(e) => setUserDescription(e.target.value)}
-                    sx={{
-                        mb:"20px"
-                    }}
+                    sx={styleForAddUserFormTextFields}
                     value={userDescription}
                 ></TextField>
                 <Button 
                     variant="contained"
                     onClick={makeUser}
-                    sx={{
-                        mb:"20px"
-                    }}
+                    sx={styleForAddUserFormTextFields}
                 >
                     
                     Add user to Data
@@ -101,14 +85,7 @@ function AddUserForm( {addUserToData} ){
             </FormControl>
             {showAlert && <Alert 
                         severity="error"
-                        sx={{
-                            position:"absolute",
-                            top:"1",
-                            zIndex:"2",
-                            width:"99.2%",
-                            p:"0",
-                            m:"0"
-                        }}
+                        sx={styleForAddUserFormAlert}
                     >
                     Fill all fields!
                 </Alert>

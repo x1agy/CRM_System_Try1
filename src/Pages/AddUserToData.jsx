@@ -1,6 +1,6 @@
 import React from "react";
-import Header from "../components/Headers/HeaderForAddUserToData";
-import AddUserForm from "../components/Users/AddUserForm";
+import Header from "../Components/Headers/HeaderForAddUserToData";
+import AddUserForm from "../Components/Users/AddUserForm";
 
 function AddUsersToData({addUserToData}){
     return(

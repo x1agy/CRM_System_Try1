@@ -13,9 +13,7 @@ function App() {
     async function getUsersDataBase(){
       const response = await fetch("http://localhost:8000/users");
       const dataBase = await response.json();
-      setUsersData(
-        dataBase
-      )
+      setUsersData(dataBase)
     }
     getUsersDataBase();
   }, [usersCount])
@@ -42,6 +40,19 @@ function App() {
       setUsersCount(usersCount - 1)
   }
 
+  async function editUser(id, key, value){
+    const user = usersData.find(item => item.id === id);
+    user[key] = value;
+    await fetch(`http://localhost:8000/users/${id}`, {
+      method: "PUT",
+      headers: {
+        'Content-Type': 'application/json', 
+      },
+      body: JSON.stringify(user)
+    })
+    setUsersCount(usersCount + 1)
+  }
+
   return (
     <Routes>
       <Route 
@@ -59,6 +70,7 @@ function App() {
             filteredUsers={filteredUsers}
             setFilterWord={(i) => setFilterWord(i)}
             deleteUser={(i) => deleteUser(i)}
+            editUser={(id, key, value) => editUser(id, key, value)}
           />
         }
       >
