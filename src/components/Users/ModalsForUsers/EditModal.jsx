@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Snackbar, Alert, Modal, TextField, MenuItem, Select, FormControl, InputLabel, Button } from "@mui/material";
+import { Box, Snackbar, Alert, Modal, TextField, MenuItem, Select, FormControl, Button } from "@mui/material";
 import {styleForUserModal, styleForUserEmail, styleForUserDeleteButton, styleForUserPosition, styleForUserDescription, styleForUserNameInModal, styleForUserReturnButton, styleForCloseIcon} from "../../Consts/StyleConstants/UsersConsts/UserCardStyleConsts";
 import CloseIcon from '@mui/icons-material/Close';
 
