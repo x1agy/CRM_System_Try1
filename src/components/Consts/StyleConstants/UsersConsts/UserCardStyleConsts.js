@@ -31,20 +31,59 @@ export const styleForUserNameInCard = {
 }
 
 export const styleForUserEmail = {
-    mt: "10px",
+
     width: "300px"
 }
 
 export const styleForUserDeleteButton = {
+    p:"5px",
+    mt:"15px",
+    color:"red"
+}
+
+export const styleForUserEditButton = {
+    p:"5px",
+    mt:"15px",
+}
+
+export const styleForUserReturnButton={
+    p:"5px",
+    mt:"15px",
+    ml:"67%"
+}
+
+export const styleForUserNameInAbout = {
+    mt:"15px",
+    width:"350px"
+}
+
+export const styleForUserAboutAvatar = {
     position:"absolute",
-    right:"20px",
-    top:15,
-    cursor:"pointer"
+    right:"15px",
+    top:"15px",
+    height:"60px",
+    width:"60px",
+    border:"1px solid black"
 }
 
 export const styleForUserPosition = {
-    mt: "20px",
-    width: "180px"
+    width: "300px",
+    
+}
+
+export const styleForUserDescriptionAbout = {
+    wordWrap:"break-word",
+    borderTop:"1px solid black",
+    mt:"10px",
+    pt:'10px'
+}
+
+export const styleForCloseIcon = {
+    fontSize:"15px",
+    position:"absolute",
+    top:"0",
+    right:"0",
+    cursor:"pointer"
 }
 
 export const styleForUserDescription = {
