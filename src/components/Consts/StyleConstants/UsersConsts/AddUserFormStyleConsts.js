@@ -17,5 +17,5 @@ export const styleForAddUserFormAlert = {
     zIndex:"2",
     width:"99.2%",
     p:"0",
-    m:"0"
+    m:"1px"
 }
