@@ -1,6 +1,6 @@
-import { Alert, FormControl, InputLabel, MenuItem, Select, TextField, Button } from "@mui/material";
-import React, { useState } from "react";
-import { styleForAddUserFormAlert, styleForAddUserFormTextFields, styleForAddUserFormFormControl } from "../Consts/StyleConstants/UsersConsts/AddUserFormStyleConsts";
+import { FormControl, InputLabel, MenuItem, Select, TextField, Button } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { styleForAddUserFormTextFields, styleForAddUserFormFormControl } from "../Consts/StyleConstants/UsersConsts/AddUserFormStyleConsts";
 
 function AddUserForm( {addUserToData} ){
     const [userPosition, setUserPosition] = useState("");
@@ -9,7 +9,26 @@ function AddUserForm( {addUserToData} ){
     const [userAvatar, setUserAvatar] = useState("");
     const [userDescription, setUserDescription] = useState("");
 
-    const [showAlert, setShowAlert] = useState(false);
+    const [formError, setFormError] = useState("none")
+    const [buttonDisabled, setButtonDisabled] = useState(true)
+
+    useEffect(() => {
+        if(userMail.length < 1) setFormError("none")
+        else if(userMail.search(/^[A-z]+@[a-z]+\.[a-z]{2,3}$/) === -1){
+            setFormError("lightgoldenrodyellow")
+        }else {
+            setFormError("none")
+        }
+    }, [userMail])
+
+    useEffect(() => {
+        if(!userName || (userMail.search(/^[A-z]+@[a-z]+\.[a-z]{2,3}$/) === -1) || !userPosition || !userDescription){
+            setButtonDisabled(true)
+        }
+        else{
+            setButtonDisabled(false)
+        }
+    }, [userPosition, userDescription, userName, userMail])
 
     function makeUser(){
         const user = {
@@ -19,20 +38,13 @@ function AddUserForm( {addUserToData} ){
             position: userPosition,
             description: userDescription,
         }
-        if(!userName || !userMail || !userPosition || !userDescription){
-            setShowAlert(true)
-            setTimeout(() => {
-                setShowAlert(false)
-            }, 3000)
-        }else{
-            addUserToData(user)
-            setUserName("");
-            setUserPosition("");
-            setUserAvatar("");
-            setUserDescription("");
-            setUserMail("");
-        }
-    }
+        addUserToData(user)
+        setUserName("");
+        setUserPosition("");
+        setUserAvatar("");
+        setUserDescription("");
+        setUserMail("");
+}
 
     return(
         <>
@@ -59,7 +71,11 @@ function AddUserForm( {addUserToData} ){
                 <TextField
                     label="Person mail" variant="outlined"
                     onChange={(e) => setUserMail(e.target.value)}
-                    sx={styleForAddUserFormTextFields}
+                    sx={{
+                        mb:"20px",
+                        bgcolor:formError,
+                        transition:"0.3s"
+                    }}
                     value={userMail}
                 ></TextField>
                 <TextField
@@ -77,19 +93,13 @@ function AddUserForm( {addUserToData} ){
                 <Button 
                     variant="contained"
                     onClick={makeUser}
+                    disabled={buttonDisabled}
                     sx={styleForAddUserFormTextFields}
                 >
                     
                     Add user to Data
                 </Button>
             </FormControl>
-            {showAlert && <Alert 
-                        severity="error"
-                        sx={styleForAddUserFormAlert}
-                    >
-                    Fill all fields!
-                </Alert>
-            }
         </>
     )
 }
